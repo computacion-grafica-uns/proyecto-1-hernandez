@@ -40,7 +40,7 @@ public class CO  : MonoBehaviour{
             objetivo.z + z
         );
 
-        return MVP.CreateViewMatrix(nuevaPosicion, objetivo, Vector3.up);
+        return MatrixVP.CreateViewMatrix(nuevaPosicion, objetivo, Vector3.up);
  
  
     }
