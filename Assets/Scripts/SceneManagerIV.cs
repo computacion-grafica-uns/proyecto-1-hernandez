@@ -20,70 +20,42 @@ float profundidad = 6f;
 float alto = 3f;
         // CREAR MUEBLES
         CrearObjeto("bed1",    new Vector3(2, -1f, 1.5f),    new Vector3(0, 90, 0), Vector3.one,new Color(0.7f, 0.7f, 0.7f));
-        //CrearObjeto("table",   new Vector3(-2, 0, 1),   Vector3.zero,          Vector3.one);
-        //CrearObjeto("chair1",  new Vector3(-1, 0, 1),   new Vector3(0, 45, 0), Vector3.one);
-        //CrearObjeto("placard", new Vector3(-1, 0, 1),   new Vector3(0, 45, 0), Vector3.one);
-
-        // CREAR ESCENA - piso
-        //CrearObjeto("floor", Vector3.zero, Vector3.zero, Vector3.one);
-      //Bounds piso = CrearObjeto("floor", Vector3.zero, Vector3.zero, Vector3.one,new Color(0.96f, 0.87f, 0.70f));
-      //ESTE SINO Bounds piso = CrearObjeto("floor", Vector3.zero, Vector3.zero, Vector3.one,new Color(0.96f, 0.87f, 0.70f));
+       
        Bounds piso = CrearObjeto("floor", new Vector3(0, -1.5f, 0), Vector3.zero, Vector3.one, new Color(0.96f, 0.87f, 0.70f));
 
-       
-        // PAREDES
-        // Pared trasera: ya está en XY centrada en X, la movemos a Z = -3
-        //CrearObjeto("wall_back1",  new Vector3(0, 0, -3), Vector3.zero,         Vector3.one);
-        
+       // Después de crear el piso: techo
+CrearObjeto("floor", new Vector3(0, 1.5f, 0), Vector3.zero, Vector3.one, new Color(0.9f, 0.9f, 0.9f));
+      
         Color paredColor = new Color(0.98f, 0.92f, 0.84f);
-         //CrearObjeto("wall_back1", new Vector3(0, 0, -piso.extents.z), Vector3.zero, Vector3.one,paredColor);
         CrearObjeto("wall_back1",
     new Vector3(0, 0, -profundidad / 2f),
     Vector3.zero,
     Vector3.one,
     paredColor);
         
-        // Pared frontal: la movemos a Z = +3
-      
-        //CrearObjeto("wall_front1", new Vector3(0, 0, 3),  Vector3.zero,         Vector3.one);
-       // CrearObjeto("wall_front1", new Vector3(0, 0, piso.extents.z), Vector3.zero, Vector3.one,paredColor);
         CrearObjeto("wall_front1",
         new Vector3(0, 0, profundidad / 2f),
         Vector3.zero,
         Vector3.one,
         paredColor);
         
-        // Pared izquierda: está en el plano ZY con X=0, la movemos a X = -4
-        // y desplazamos Z para que quede alineada con Z = -3
+    
         
-        //CrearObjeto("wall_left1",  new Vector3(-4, 0, -3), Vector3.zero,        Vector3.one);
-        //CrearObjeto("wall_left1", new Vector3(-piso.extents.x, 0, 0), Vector3.zero, Vector3.one,paredColor);
+        
         CrearObjeto("wall_left1",
         new Vector3(-ancho / 2f, 0, 0),
         Vector3.zero,
         Vector3.one,
         paredColor);
         
-        // Pared derecha: igual pero en X = +4, rotada 180° en Y para que la normal mire al interior
-        //CrearObjeto("wall_right1", new Vector3(4, 0, -3),  new Vector3(0, 180, 0), Vector3.one);
-       // CrearObjeto("wall_right1", new Vector3(piso.extents.x, 0, 0), new Vector3(0, 180, 0), Vector3.one,paredColor);
+        
           CrearObjeto("wall_right1",
         new Vector3(ancho / 2f, 0, 0),
         new Vector3(0, 180, 0),
         Vector3.one,
         paredColor);
         
-        // TECHO
-       
-       /* CrearObjeto("wallB1",
-    new Vector3(0f, 0f, -1.04f),
-    Vector3.zero,
-    Vector3.one);
-
-    CrearObjeto("wallB2",
-    new Vector3(-1.66f, 0, 1.99f),
-    Vector3.zero,
-    Vector3.one);*/
+        
 
     CrearObjeto("wallB1", new Vector3(-0.8f, 0f, -1.04f), Vector3.zero, Vector3.one,paredColor);
 CrearObjeto("wallB2", new Vector3(-2.8f, 0f, 1.99f), Vector3.zero, Vector3.one,paredColor);
@@ -93,39 +65,6 @@ CrearObjeto("wallB2", new Vector3(-2.8f, 0f, 1.99f), Vector3.zero, Vector3.one,p
         CrearCamara();
     }
 
-    /*void CreateCamera()
-    {
-        cameraObject = new GameObject("MainCamera");
-        Camera cam = cameraObject.AddComponent<Camera>();
-        cam.backgroundColor = Color.white;
-        cameraObject.transform.position = new Vector3(0f, 6f, -10f);
-        cameraObject.transform.LookAt(Vector3.zero);
-    }*/
-/*       void CrearCamara()
-{
-    // 1. Crear el objeto de la cámara
-    GameObject camObj = new GameObject("MainCamera");
-    Camera cam = camObj.AddComponent<Camera>();
-    
-    // 2. Configuración visual básica
-    cam.backgroundColor = new Color(0.53f, 0.81f, 0.98f); // cielo
-    cam.clearFlags = CameraClearFlags.SolidColor;
-
-    // 3. Añadir el script de Cámara Orbital
-    camaraOrbital orbital = camObj.AddComponent<camaraOrbital>();
-
-    // 4. Configurar los parámetros del script
-    // Definimos el punto al que queremos que mire (el centro del monoambiente)
-    Vector3 centroObjetivo = new Vector3(0f, 1.5f, 3f);
-    orbital.objetivo = centroObjetivo;
-
-    // 5. Posición inicial
-    // Colocamos la cámara físicamente en su lugar inicial
-    camObj.transform.position = new Vector3(0f, 8f, -10f);
-    
-    // Importante: El método Start() de OrbitalCamera usará esta posición 
-    // para calcular automáticamente el yaw, pitch y la distancia inicial.
-}*/
     void CrearCamara()
 {
     GameObject camObj = new GameObject("MainCamera");

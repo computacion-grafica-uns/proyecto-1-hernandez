@@ -1,0 +1,23 @@
+# wall_back.obj
+# Pared trasera
+# Dimensiones: 8m ancho (X: -4 a +4) × 3m alto (Y: 0 a 3)
+# Plano XY, normal apuntando hacia +Z
+# Creada en el origen del mundo (se traslada desde el SceneManager)
+#
+#  v4--------v3
+#  |          |
+#  |          |
+#  v1--------v2
+
+v -4.0 0.0 0.0
+v 4.0 0.0 0.0
+v 4.0 3.0 0.0
+v -4.0 3.0 0.0
+
+# Dos triángulos que forman todo el rectangulo 
+f 1 2 3
+f 1 3 4
+
+# Cara invertida (para el otro lado) para que se vea de los dos lados 
+f 3 2 1
+f 4 3 1
