@@ -15,10 +15,16 @@ public class SceneManagerIV : MonoBehaviour
 
 
     void Start()
-    {float ancho = 8f;
-float profundidad = 6f;
-float alto = 3f;
+        {float ancho = 8f;
+                float profundidad = 6f;
+                float alto = 3f;
         // CREAR MUEBLES
+        /* CrearObjeto(string nombreOBJ,
+            Vector3 posicion,
+            Vector3 rotacionGrados,
+            Vector3 escala,
+            Color color)*
+            
         CrearObjeto("bed1",    new Vector3(2, -1f, 1.5f),    new Vector3(0, 90, 0), Vector3.one,new Color(0.7f, 0.7f, 0.7f));
        
        Bounds piso = CrearObjeto("floor", new Vector3(0, -1.5f, 0), Vector3.zero, Vector3.one, new Color(0.96f, 0.87f, 0.70f));
@@ -86,11 +92,14 @@ CrearObjeto("wallB2", new Vector3(-2.8f, 0f, 1.99f), Vector3.zero, Vector3.one,p
 
 
 
-
+//carga el objeto
   Bounds CrearObjeto(string nombreOBJ, Vector3 posicion, Vector3 rotacionGrados, Vector3 escala, Color color)
 {
+    //carga el obj
     OBJParser1 parser = new OBJParser1();
     Mesh mesh = parser.LoadOBJ(nombreOBJ);
+
+    //asginar color a vertices --> crea array de colores del tamaño del mesh ---> todos los vertices del mismo color
 Color[] colors = new Color[mesh.vertexCount];
 for (int i = 0; i < colors.Length; i++)
 {
@@ -114,13 +123,17 @@ mesh.colors = colors;
 
     Material mat = new Material(shader);
     mat.SetColor("_MaterialColor", color);
+
+    //MATRIZ DE MODELO 
     mat.SetMatrix("_ModelMatrix", modelMatrix); // <-- la matriz va al shader
 
     obj.AddComponent<MeshRenderer>().material = mat;
 
     objetosInstanciados.Add(obj); // necesitás esta lista también
 
-    return mesh.bounds;
+    return mesh.bounds; 
+
+    //BOUNDS PARA SABER SI DIBUJAR EL OBJETO --> SINO ME DESAPARECEN LOS OBJ
 }
 
 private List<GameObject> objetosInstanciados = new List<GameObject>();
