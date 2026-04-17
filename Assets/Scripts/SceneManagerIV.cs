@@ -23,11 +23,11 @@ public class SceneManagerIV : MonoBehaviour
             Vector3 posicion,
             Vector3 rotacionGrados,
             Vector3 escala,
-            Color color)*
-            
+            Color color)*/
+
         CrearObjeto("bed1",    new Vector3(2, -1f, 1.5f),    new Vector3(0, 90, 0), Vector3.one,new Color(0.7f, 0.7f, 0.7f));
        
-       Bounds piso = CrearObjeto("floor", new Vector3(0, -1.5f, 0), Vector3.zero, Vector3.one, new Color(0.96f, 0.87f, 0.70f));
+       Bounds piso = CrearObjeto("floor", new Vector3(0, -1.5f, 0), Vector3.zero, Vector3.one, new Color(0.9f, 0.9f, 0.9f));
 
        // Después de crear el piso: techo
 CrearObjeto("floor", new Vector3(0, 1.5f, 0), Vector3.zero, Vector3.one, new Color(0.9f, 0.9f, 0.9f));

@@ -2,26 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-using UnityEngine;
 
 public class CO  : MonoBehaviour{
     public Vector3 objetivo;
     private float rho;       // Distancia al objetivo
-    // �ngulos en radianes
-    private float theta;     // �ngulo polar (desde el eje Y hacia abajo)
-    private float phi;       // �ngulo azimutal (giro en el plano XZ)
 
-   /* public camaraOrbital(Vector3 objetivoInicial, float rhoInicial){
-        this.objetivo = objetivoInicial;
-        this.rho = rhoInicial;
-        // Arrancamos con un �ngulo intermedio
-        this.theta = Mathf.PI / 4f; 
-        this.phi = 0f; 
-    }*/
+    private float theta;     // angulo polar
+    private float phi;       
+
+   
 
     void Start()
 {
@@ -50,7 +40,7 @@ public class CO  : MonoBehaviour{
             objetivo.z + z
         );
 
-        return MatrizVP.CreateViewMatrix(nuevaPosicion, objetivo, Vector3.up);
+        return MVP.CreateViewMatrix(nuevaPosicion, objetivo, Vector3.up);
  
  
     }
