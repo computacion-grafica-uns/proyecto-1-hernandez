@@ -6,7 +6,7 @@ public class CamaraPrimeraPersona : MonoBehaviour
 {
     private Vector3 posicion;
 
-    // Ángulos esféricos
+    // Ángulos
     private float theta; // vertical
     private float phi;   // horizontal
 
@@ -74,8 +74,6 @@ public class CamaraPrimeraPersona : MonoBehaviour
         float avance,
         float lateral)
     {
-       // posicion += forward * avance;
-    //    posicion += right * lateral;
 
         Vector3 movimiento = forward * avance + right * lateral;
 posicion += movimiento;
