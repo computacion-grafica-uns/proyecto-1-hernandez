@@ -25,7 +25,6 @@ public class CO  : MonoBehaviour{
     public Matrix4x4 CalcularMatrizVista(float deltaPhi, float deltaTheta){
         phi = phi + deltaPhi;
         theta = theta + deltaTheta; 
-        // Protegemos theta para evitar el Gimbal Lock y no atravesar el piso
         float limiteMinimo = 0.05f;
         float limiteMaximo = (Mathf.PI / 2f) - 0.05f;
         theta = Mathf.Clamp(theta, limiteMinimo, limiteMaximo);
@@ -53,7 +52,6 @@ void Update()
     float deltaPhi = Input.GetAxis("Mouse X") * velocidad * Time.deltaTime;
     float deltaTheta = -Input.GetAxis("Mouse Y") * velocidad * Time.deltaTime;
 
-    // 🔥 ACÁ USÁS TU FUNCIÓN
     viewMatrix = CalcularMatrizVista(deltaPhi, deltaTheta);
 }
 
