@@ -19,7 +19,7 @@ Shader "CustomMyShader"
             struct v2f {
                 float4 vertex : SV_POSITION;
                 fixed4 color : COLOR;
-                float depth : TEXCOORD0; // 👈 NUEVO
+                float depth : TEXCOORD0; // 
             };
 
             uniform float4x4 _ModelMatrix;
@@ -28,7 +28,7 @@ Shader "CustomMyShader"
 
             fixed4 _MaterialColor;
 
-            // 👇 NUEVO
+            // para neblina
             uniform float4 _FogColor;
             uniform float _FogDensity;
 
@@ -41,7 +41,7 @@ Shader "CustomMyShader"
 
                 o.vertex = mul(_ProjectionMatrix, viewPos);
 
-                // 👇 guardamos distancia a cámara
+                // guardamos distancia a cámara
                 o.depth = -viewPos.z;
 
                 o.color = v.color;
