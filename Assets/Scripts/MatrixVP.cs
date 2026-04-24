@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
 
 public static class MatrixVP {
     public static Matrix4x4 CreateModelMatrix(Vector3 newPosition, Vector3 newRotation, Vector3 newScale){
+       //mueve el objeto en el espacio
         Matrix4x4 positionMatrix = new Matrix4x4(
             new Vector4(1f, 0f, 0f, newPosition.x),
             new Vector4(0f, 1f, 0f, newPosition.y),
@@ -58,6 +58,8 @@ public static class MatrixVP {
         up = up.normalized;
         /* Regla de la mano derecha */
         Vector3 right = Vector3.Cross(forward, up);
+
+        //OJOO el cross define el sistema, de mano derecha vs ixquierda
         up = Vector3.Cross(right, forward);
 
         Matrix4x4 traslacionInversa = new Matrix4x4(
@@ -78,4 +80,23 @@ public static class MatrixVP {
         
         return rotacionInversa * traslacionInversa;
     }
+
+
+
+public static Matrix4x4 CrearPerspective(float fov, float aspect, float near, float far)
+{
+    float f = 1f / Mathf.Tan(fov * Mathf.Deg2Rad / 2f);
+
+    Matrix4x4 m = new Matrix4x4(
+        new Vector4(f / aspect, 0f, 0f, 0f),
+        new Vector4(0f, f, 0f, 0f),
+        new Vector4(0f, 0f, (far + near) / (near - far), (2 * far * near) / (near - far)),
+        new Vector4(0f, 0f, -1f, 0f)
+    );
+
+    m = m.transpose;
+
+    return m;
+}
+
 }
